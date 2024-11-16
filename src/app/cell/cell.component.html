@@ -1,0 +1,5 @@
+<article [ngClass]="getCellClass()" (click)="onClick()">
+    <app-horse class="horse-block" *ngIf="isKnight"></app-horse>
+    <div *ngIf="canGo && !moveNumber" [ngClass]="getDotClass()"></div>
+    <span *ngIf="moveNumber > 0 && !isKnight" class="move-number">{{ moveNumber }}</span>
+</article>

@@ -1,0 +1,19 @@
+<p [ngClass]="lose ? 'text lose' : win ? 'text win' : 'text'">{{lose ? "Вы проиграли" : win ? "Вы победили!" : "Идет игра"}}</p>
+<section class="board">
+  <ng-container *ngFor="let row of board; let rowIndex = index">
+    <ng-container *ngFor="let cell of row; let colIndex = index">
+      <app-cell 
+        [id]="rowIndex+colIndex" 
+        [isKnight]="knightPosition.row === rowIndex && knightPosition.col === colIndex" 
+        [win]="win"
+        [lose]="lose"
+        [moveNumber]="moves[rowIndex][colIndex]"
+        [canGo]="isCellAvailable(rowIndex, colIndex)" 
+        (cellClick)="moveKnight(rowIndex, colIndex)">
+      </app-cell>
+    </ng-container>
+  </ng-container>
+</section>
+<section class="drop-block">
+  <button (click)="reset()" class="drop-block__button">Сброс</button>
+</section>
